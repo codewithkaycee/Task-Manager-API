@@ -1,13 +1,13 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 
-mongoose.set('strictQuery', false);
+mongoose.set('strictQuery', true);
 
 mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
-},).then((res) => {
-    console.log("MongoDB connected!!");
+    useUnifiedTopology: true,
+},).then(() => {
+    console.log("Successfully Connected to the database");
   }).catch(error => {
-     console.log(error);
+     console.log("Database Connection failed:", error.message);
    });
