@@ -7,8 +7,17 @@ const loginUser = async (req,res) => {
 
 //signup user controller 
 
-const singupUser = async(req,res) => {
-  res.json({mssg: 'signup User'})
+const signupUser = async(req,res) => {
+  const {email, password} = req.body
+
+  try {
+    const user = await User. signup(email,password);
+    // Res with a successful status and the user's email
+    res.status(200).json({email, user})
+    // If an error occurs, res with an error status and the error message
+  } catch (error) {
+    res.status(400).json({error: error.message})
+  }
 }
 
-module.exports = {loginUser, singupUser}
+module.exports = {loginUser, signupUser}
