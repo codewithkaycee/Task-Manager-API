@@ -7,7 +7,19 @@ const generateTokenKey = (_id) =>{
 }
 //login user controller 
 const loginUser = async (req,res) => {
-  res.json({mssg: 'login user'})
+  const {email, password} = req.body
+
+  try {
+    const user = await User. login(email,password);
+
+    // create token 
+    const token = generateTokenKey(user._id)
+    // Res with a successful status and the user's email
+    res.status(200).json({email, token})
+    // If an error occurs, res with an error status and the error message
+  } catch (error) {
+    res.status(400).json({error: error.message})
+  }
 }
 
 //signup user controller 
