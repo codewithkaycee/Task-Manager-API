@@ -20,8 +20,5 @@
     "mongoose": "^6.10.0",
     "nodemon": "^1.14.9",
     "validator": "^13.9.0"
-  },
-  "devDependencies": {
-    "esm": "^3.2.25"
   }
 }
